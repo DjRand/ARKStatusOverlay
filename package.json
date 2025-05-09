@@ -1,0 +1,40 @@
+{
+  "name": "arkstatusoverlay",
+  "version": "1.0.2",
+  "description": "An Overlay for ARK: Survival Ascended that shows the status of your server.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.rand.arkstatusoverlay",
+    "productName": "ARK Status Overlay",
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "icon.png"
+    },
+    "files": [
+      "**/*",
+      "!build/*",
+      "!node_modules/*",
+      "icon.png",
+      "online.wav",
+      "offline.wav"
+    ]
+  },
+  "keywords": [],
+  "author": "rand",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^36.1.0",
+    "electron-builder": "^24.9.0"
+  },
+  "dependencies": {
+    "asa-query": "^0.1.0",
+    "sound-play": "^1.1.0"
+  }
+}

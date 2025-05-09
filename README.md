@@ -1,2 +1,12 @@
 # ARKStatusOverlay
- A simple overlay app for ARK Survival Ascended to see when the server is online/offline.
+ A simple overlay app for ARK Survival Ascended to see your server's status.
+
+# TODO:
+ Next update I'll probably change sever selection a bit to streamline things.
+
+# Installation:
+ This requires node.js and electron.
+
+ For node package manager, you'd need to install electron, asa-query, soundplay
+ 
+ I'll be adding in a release page soon.

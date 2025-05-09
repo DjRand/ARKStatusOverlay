@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ARK Status Configuration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    h2 {
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    .options-group {
+      margin-top: 20px;
+    }
+    .checkbox-group {
+      margin: 10px 0;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .button-group button {
+      margin-left: 10px;
+    }
+    .cancel {
+      background-color: #f44336;
+    }
+    .cancel:hover {
+      background-color: #d32f2f;
+    }
+    .help-text {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>ARK Status Configuration</h2>
+  
+  <div class="form-group">
+    <label for="serverNames">Server Names (one per line):</label>
+    <textarea id="serverNames"></textarea>
+    <div class="help-text">
+      Enter server names to search for. These are typically server numbers or 
+      distinctive parts of server names that help identify your servers.
+    </div>
+  </div>
+  
+  <div class="options-group">
+    <h3>Notifications</h3>
+    
+    <div class="checkbox-group">
+      <input type="checkbox" id="soundNotification" checked>
+      <label for="soundNotification" style="display: inline;">Play sound on status change</label>
+    </div>
+    
+    <div class="checkbox-group">
+      <input type="checkbox" id="visualNotification" checked>
+      <label for="visualNotification" style="display: inline;">Show visual notifications</label>
+    </div>
+  </div>
+  
+  <div class="button-group">
+    <button class="cancel" id="cancelBtn">Cancel</button>
+    <button id="saveBtn">Save</button>
+  </div>
+
+  <script>
+    // Load and save configuration
+    window.configAPI.onLoadConfig((config) => {
+      const serverNamesTextarea = document.getElementById('serverNames');
+      const soundCheckbox = document.getElementById('soundNotification');
+      const visualCheckbox = document.getElementById('visualNotification');
+      
+      // Fill the form with current config values
+      serverNamesTextarea.value = config.serverNames.join('\n');
+      soundCheckbox.checked = config.notifications.sound;
+      visualCheckbox.checked = config.notifications.visual;
+    });
+    
+    // Save button click handler
+    document.getElementById('saveBtn').addEventListener('click', () => {
+      const serverNamesTextarea = document.getElementById('serverNames');
+      const soundCheckbox = document.getElementById('soundNotification');
+      const visualCheckbox = document.getElementById('visualNotification');
+      
+      // Read values from form
+      const serverNames = serverNamesTextarea.value
+        .split('\n')
+        .map(name => name.trim())
+        .filter(name => name.length > 0);
+      
+      // Create config object
+      const config = {
+        serverNames,
+        notifications: {
+          sound: soundCheckbox.checked,
+          visual: visualCheckbox.checked
+        }
+      };
+      
+      // Save config
+      window.configAPI.saveConfig(config);
+      window.close();
+    });
+    
+    // Cancel button click handler
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+      window.close();
+    });
+  </script>
+</body>
+</html>

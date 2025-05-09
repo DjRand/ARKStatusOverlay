@@ -1,0 +1,48 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent !important;
+    -webkit-app-region: drag;
+    /* Disable all transitions to prevent flashing */
+    transition: none !important;
+}
+
+* {
+    /* Disable all transitions everywhere */
+    transition: none !important;
+}
+  
+.overlay-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  /* Make sure no box shadow */
+  box-shadow: none;
+}
+
+.drag-handle {
+    width: 15px;
+    height: 15px;
+    background-color: #3498db;
+    border-radius: 3px;
+    cursor: move;
+    margin-right: 10px;
+    -webkit-app-region: no-drag;
+}
+
+.status {
+    flex: 1;
+    user-select: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+}
+
+/* Hide any potential background elements */
+#background, .background {
+    display: none !important;
+    opacity: 0 !important;
+}
