@@ -1,3 +1,5 @@
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P7U9JRL)
+
 # ARKStatusOverlay
  A simple overlay app for ARK Survival Ascended to see your server's status.
 
