@@ -9,4 +9,4 @@
 
  For node package manager, you'd need to install electron, asa-query, soundplay
  
- I'll be adding in a release page soon.
+ If you're using Windows 64bit, I have a portable .exe on the release page: https://github.com/DjRand/ARKStatusOverlay/releases/tag/Release
